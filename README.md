@@ -1,5 +1,5 @@
 # TimeKeeper
-## Introducition
+## Introduction
 Helps you keep track of your working hours. A simple GUI which includes a stopwatch and an entry for labelling your project.
 
 ## Installing dependencies
