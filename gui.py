@@ -253,7 +253,7 @@ class Labeler:
 # Start stopwatch and save start time.
 def on_click():
     clock.save_time()
-    watch.start()  # Currently causing crashes.
+    watch.start()
 
 
 # Main loop.
@@ -264,10 +264,10 @@ app = App(window=root)
 # Object that takes data from the program and writes it to Excel.
 datagatherer = Gatherer()
 
-# Window created
+
 clock = Clock()
 watch = Stopwatch()
 labeler = Labeler()
-# Watch and Clock initiated
+
 
 app.mainloop()
