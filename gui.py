@@ -20,13 +20,11 @@ class App(tk.Frame):
 
 # Stopwatch class for keeping track of hours worked
 class Stopwatch:
-
     def __init__(self):
-
         # Initiating with the buttons, each assigned a text, position, and function upon click.
         self.start_button = tk.Button(root, text="Start", command=on_click).grid(column=0, row=1, padx=app.pad,
                                                                                  pady=app.pad)
-        self.pause_button = tk.Button(root, text="Reset", command=self.reset).grid(column=1, row=1, padx=app.pad,
+        self.reset_button = tk.Button(root, text="Reset", command=self.reset).grid(column=1, row=1, padx=app.pad,
                                                                                    pady=app.pad)
         self.stop_button = tk.Button(root, text="Stop", command=self.stop).grid(column=2, row=1, padx=app.pad,
                                                                                 pady=app.pad)
@@ -67,6 +65,8 @@ class Stopwatch:
             print(f"{labeler.selected_variable} is selected")
             datagatherer.recieve(dt.datetime.strftime(dt.datetime.now(), "%H:%M:%S, %d/%m/%Y"), self.final_time,
                                  labeler.selected_variable)  # Temporary string placeholder for test.
+            datagatherer.split_datetime()
+
             datagatherer.write()
             # Resets timer and variables.
             self.seconds = 0

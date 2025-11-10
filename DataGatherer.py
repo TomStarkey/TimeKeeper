@@ -13,6 +13,7 @@ class Gatherer:
     def __init__(self):
         self.time_worked = ""
         self.date = ""
+        self.time = ""
         self.label = ""
 
     def recieve(self, date, time, label):
@@ -25,12 +26,12 @@ class Gatherer:
         if not os.path.isfile(excel_file):
             wb = Workbook()
             sheet = wb.active
-            sheet.append(["Date", "Time worked", "Label"])
-            sheet.append([self.date, self.time_worked, self.label])
+            sheet.append(["Date", "Time", "Time worked", "Label"])
+            sheet.append([self.date, self.time, self.time_worked, self.label])
         else:
             wb = load_workbook(excel_file)
             sheet = wb.active
-            sheet.append([self.date, self.time_worked, self.label])
+            sheet.append([self.date, self.time, self.time_worked, self.label])
 
         wb.save(excel_file)
 
@@ -38,3 +39,13 @@ class Gatherer:
         self.time_worked = ""
         self.date = ""
         self.label = ""
+
+    def split_datetime(self):
+        date = str(self.date)
+        comma_idx = date.index(",")
+
+        time = date[:comma_idx]
+        date = date[comma_idx+1:]
+
+        self.date = date
+        self.time = time
