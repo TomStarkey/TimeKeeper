@@ -65,6 +65,7 @@ class Stopwatch:
             print(f"{labeler.selected_variable} is selected")
             datagatherer.recieve(dt.datetime.strftime(dt.datetime.now(), "%H:%M:%S, %d/%m/%Y"), self.final_time,
                                  labeler.selected_variable)  # Temporary string placeholder for test.
+            
             datagatherer.split_datetime()
 
             datagatherer.write()
@@ -72,7 +73,7 @@ class Stopwatch:
             self.seconds = 0
             self.minutes = 0
             self.hours = 0
-            self.final_time = 0
+            self.final_time = ""
             self.worked.config(text="Time worked: 00:00:00")
 
             # Should reset err_msg but doesn't.
@@ -176,6 +177,7 @@ class Labeler:
                                        onvalue="selected", offvalue="unselected")
                     self.project_list_boxes.append(c)
             except TypeError:
+                print("Type error; project list type is:")
                 print(type(self.project_list))
 
         # Calling display method to show any pre-existing projects.

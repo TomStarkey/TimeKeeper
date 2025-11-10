@@ -16,7 +16,7 @@ class Gatherer:
         self.time = ""
         self.label = ""
 
-    def recieve(self, date, time, label):
+    def recieve(self, date: str, time: str, label: str):
         self.time_worked = time
         self.date = date
         self.label = label
